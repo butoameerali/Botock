@@ -27,6 +27,7 @@ async def safe_image_generate_task(
     aspect_ratio: str,
     model: str,
     style: str = None,
+    image_base64: str = None,
     is_pro: bool = False,
 ):
     await image_service.generate_image(
@@ -35,6 +36,7 @@ async def safe_image_generate_task(
         status_dict=image_statuses,
         aspect_ratio=aspect_ratio,
         model=model,
+        image_base64=image_base64,
         style=style,
         is_pro=is_pro,
     )
@@ -72,6 +74,7 @@ async def generate_image(
         selected_ratio,
         selected_model,
         request.style,
+        request.image_base64,
         is_pro,
     )
 

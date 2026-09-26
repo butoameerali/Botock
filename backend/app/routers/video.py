@@ -65,6 +65,7 @@ async def safe_generate_task(
     model: str = "omni-1.1-flash-360p",
     aspect_ratio: str = "16:9",
     motion_hint: str = None,
+    image_base64: str = None,
 ):
     """Wrapper that enforces the concurrency semaphore."""
     async with generation_semaphore:
@@ -76,6 +77,7 @@ async def safe_generate_task(
             model=model,
             aspect_ratio=aspect_ratio,
             motion_hint=motion_hint,
+            image_base64=image_base64,
         )
 
 
@@ -118,6 +120,7 @@ async def generate_video(
         selected_model,
         aspect_ratio,
         request.motion_hint,
+        request.image_base64,
     )
     
     return VideoGenerateResponse(
